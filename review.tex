@@ -1,0 +1,240 @@
+
+\documentclass[twocolumn,10pt]{paper}
+\usepackage[a4paper,margin=0.8in]{geometry}
+
+\usepackage[T1]{fontenc}
+\usepackage{tgschola}
+
+\begin{document}
+\title{ECOLM Futures Review}
+
+\maketitle
+\begin{sloppypar}
+  
+  %\begin{abstract}
+  %\end{abstract}
+  
+  \section{Background and Motivation}
+  
+  \subsection{What is ECOLM?}
+
+  ECOLM\footnote{http://igor.gold.ac.uk/isms/ecolm/}, or ``Electronic
+  Corpus of Lute Music'', is the name of a series of research projects
+  aiming to develop a queryable online database of lute tablature
+  encodings, of quality suitable for scholarly use.
+
+  Two critical design goals are:
+  
+  \begin{enumerate}
+  \item It gives encodings of music, not only metadata;
+  \item It is trustworthy for scholarly use: for example, sources are
+    identified, reliability of attribution is noted, editorial changes
+    are pointed out, and it distinguishes between performance and
+    diplomatic transcriptions.
+  \end{enumerate}
+  
+  Here we use the name ECOLM broadly to refer to this design of
+  database application, as well as to the past research projects with
+  that name and to the existing
+  system\footnote{http://doc.gold.ac.uk/isms/ecolm/database/} that
+  they produced.
+
+  \subsection{Aim of this Review}
+
+  We aim to review the premise and outcomes of ECOLM and to consider
+  whether a ``lightweight path to sustainability'' can be found that
+  can be incrementally extended to other tablature resources.
+
+  The following paragraphs set out the history of ECOLM and enumerate
+  other resources of interest.
+
+  \subsection{ECOLM History}
+
+  %%%!!! + bibliography
+  %%%!!! + URLs in footnote
+  \begin{itemize}
+  \item {\bf ECOLM} (1999-2002) was a project run by Tim Crawford
+    which produced a queryable database of lute encodings with
+    metadata with a web interface. Presented through a public-facing
+    server at Goldsmiths, the service is still accessible today.
+  \item {\bf ECOLM II} (2002-2006) was a successor project which
+    expanded the ECOLM database and used it for some computational
+    musicological investigations.
+  \item {\bf ECOLM III} (2012) was a short project with the goal of
+    adding further high-quality encodings by crowd-sourcing
+    corrections of OMR (optical music recognition) scans.
+    %%%!!! say more about this later
+  \end{itemize}
+
+  The ECOLM database as available online contains about 2,000
+  tablature encodings, manually curated, of relatively high quality
+  with accompanying metadata.
+
+  \subsection{Other Lute Tablature Resources}
+
+  Several other collections of lute music have been placed online by
+  various curators. Some of these are licensed appropriately for
+  inclusion in any future dataset, or have been offered for this use.
+  In some cases there are concerns about their ongoing sustainability
+  that make it particularly desirable to include them in future work.
+
+  \begin{itemize}
+    \item {\bf Lutemusic.org}\footnote{https://lutemusic.org/} curated
+      by Sarge Gerbode. Around 20,000 encodings in playing editions
+      with semi-structured metadata, informally curated with limited
+      version tracking or editorial notes.
+    \item {\bf Mss.slweiss.de}\footnote{https://mss.slweiss.de/}
+      curated by Peter Steur and the late Markus Lutz. A metadata
+      catalogue of around 68,000 listings of which the majority have
+      incipits (opening ideas) encoded.
+    \item {\bf Lute Society publications} curated by John
+      Robinson. Scans from printed periodicals intended for players,
+      containing around 7,000 encodings consisting of printed music,
+      prose commentary, and semi-structured metadata.
+    \item {\bf Phal\`ese} curated by Jan Burgers. Around 1,000
+      encodings transcribed from editions of 16th-century publisher
+      Pierre Phal\`ese with publication metadata.
+
+      %%!!! tabulate their type, content, whether published already,
+      %% licence terms, how widely used
+  \end{itemize}
+
+  %%!!! include section about other non-lute resources: RISM being the
+  %%!!! most obvious but also anything else anyone else mentioned
+  
+  \section{User Context}
+
+  We conducted informal interviews with three exemplary users of
+  online early-music resources, in order to understand scholarly
+  expectations. These were a ``traditional'' musicologist, a
+  computational musicologist, and a lute performer and teacher.
+  
+  \subsection{Musicologist}
+
+  The musicologist gave the following indications about their use of
+  online resources of this type:
+
+  \begin{itemize}
+    \item Depending on the material, may begin by searching
+      RISM\footnote{https://rism.info/} or
+      Cantus\footnote{https://cantus.uwaterloo.ca/} databases;
+    \item Routinely starts with a search by composer or source, since
+      titles tend to have too many historical variants;
+    \item Finds diplomatic transcriptions (i.e. closely following
+      the source without editorial intervention) the most useful,
+      but grateful for any transcription;
+    \item Always refers to the facsimile as well, regardless of status
+      of transcriptions, so can often do without editorial notes;
+    \item Is particularly interested in dual tablature and staff
+      renderings;
+    \item Would appreciate opportunity to annotate or correct
+      unreliable transcriptions.
+  \end{itemize}
+  
+  \subsection{Computational Musicologist}
+
+  The computational musicologist gave the following indications about
+  their use of such resources:
+
+  \begin{itemize}
+  \item Will typically begin by searching RISM, and trusts that
+    metadata in RISM is more authoritative than elsewhere;
+  \item Finds trust very important, appreciating annotations about the
+    original source, transcriber, and editorial interventions;
+  \item Can work with unreliable transcriptions if their quality is
+    known and original sources are properly described;
+  \item Appreciates a simple presentation and single search function
+    as their first entry point;
+  \item Finds the ability to refine results via facets more useful
+    than the ability to construct complex queries from the outset;
+  \item Wants the ability to download results (up to the whole
+    dataset) or query via API, to use with computational tools such
+    as music21 or Humdrum locally.
+  \end{itemize}
+  
+  \subsection{Lute Performer and Teacher}
+
+  The lute performer and teacher gave the following indications about
+  their use:
+
+  \begin{itemize}
+    \item Will often begin using the most informal performance
+      resources because they have the most material, but this causes
+      problems cross-referencing with more authoritative material;
+    \item Finds information about the original source, transcriber,
+      editorial interventions extremely important;
+    \item Expects students to know those things about the editions
+      they use when performing;
+    \item Would greatly appreciate something containing modern
+      performing editions as at lutemusic.org but with more reliable
+      editorial commentary;
+    \item In the absence of trustworthy information about the
+      transcription, needs to compare every note with facsimile before
+      using.
+  \end{itemize}
+
+  \subsection{Common Threads}
+
+  Trust and provenance are common themes in discussion with all three
+  of our exemplary users. They have different requirements for
+  content, format, detail of editorial notes and so on, but share a
+  desire to know the quality of transcription and level of editorial
+  intervention they are dealing with.
+
+  The musicological specialists were comfortable with RISM and would
+  prefer some level of compatibility, perhaps as far as having the
+  works indexed from RISM and metadata managed there.
+
+  None of the three indicated they would hope to {\em contribute}
+  material to a dataset like this, although they might appreciate the
+  ability to make corrections.
+  
+  \section{Technical Review}
+
+  \subsection{Tablature Resources}
+  
+  \subsubsection{ECOLM}
+
+  \begin{itemize}
+  \item SQL database
+  \item Entity relationships modelled in schema - pre-RDF, not triples
+  \item Structured using ``clusters'' (give examples)
+  \item Confidence levels modelled
+  \item Same database used for user logins / editorial control as for
+    content records---expectation that data managed ``within ECOLM''
+  \end{itemize}
+  
+  \subsubsection{lutemusic.org}
+
+  \begin{itemize}
+  \item Hierarchical organisation by composer, facsimile, and source
+  \end{itemize}    
+    
+  \subsubsection{mss.slweiss.de}
+  \subsubsection{Lute Society}
+  \subsubsection{Phal\`ese}
+
+  \subsection{Other Related Sites}
+  
+  \subsubsection{RISM}
+  \subsubsection{Vihuela Database}
+  \subsubsection{Josquin Research Project}
+  \subsubsection{DIAMM}
+  \subsubsection{earlymusicsources.com}
+
+  \section{Desirable Qualities of a Solution}
+  \subsection{Social}
+
+  \begin{itemize}
+  \item talk about types of user and their expectations
+  \item talk about crowdsourcing and ECOLM III
+  \end{itemize}
+  
+  \subsection{Technical}
+  \subsection{User Experience}
+
+  \section{Proposed Path}
+
+  
+\end{sloppypar}
+\end{document}

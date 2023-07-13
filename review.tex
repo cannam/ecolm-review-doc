@@ -207,10 +207,33 @@
   \subsubsection{lutemusic.org}
 
   \begin{itemize}
-  \item Hierarchical organisation by composer, facsimile, and source
+  \item Hierarchical organisation with separate trees by composer,
+    source, and facsimile
+  \item Composer and source trees contain Fronimo tab transcriptions
+    with derived MIDI and PDF renderings
+  \item Facsimile tree contains images (typically PNG) closely cropped
+    with thresholding, apparently intended for reading from screen
+    rather than as historical page facsimiles
+  \item Separate tab hierarchy also present with tab-format files,
+    probably older
+  \item Hand-maintained spreadsheet contains metadata and index for
+    Fronimo files
+  \item Website presents the filesystem hierarchy directly (entirely
+    static, uses web server index pages, nothing generated)
   \end{itemize}    
-    
+
   \subsubsection{mss.slweiss.de}
+
+  \begin{itemize}
+  \item PHP web application driven entirely from CSV files (actually
+    semicolon-separated rather than comma-separated)
+  \item Flat directory containing one CSV file per source
+  \item Incipits are in the CSV files, in ABC format, rendered to SVG
+    from the PHP scripts for serving to browser
+  \item Separate index CSV files list manuscript metadata and
+    concordances
+  \end{itemize}
+    
   \subsubsection{Lute Society}
   \subsubsection{Phal\`ese}
 

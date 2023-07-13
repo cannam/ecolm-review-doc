@@ -15,7 +15,7 @@
   %\end{abstract}
   
   \section{Background and Motivation}
-  
+
   \subsection{What is ECOLM?}
 
   ECOLM\footnote{http://igor.gold.ac.uk/isms/ecolm/}, or ``Electronic
@@ -197,11 +197,16 @@
 
   \begin{itemize}
   \item SQL database
-  \item Entity relationships modelled in schema - pre-RDF, not triples
-  \item Structured using ``clusters'' (give examples)
+  \item Entity relationships modelled in schema---pre-RDF, not
+    triples, relations hardcoded
+  \item Structured using ``clusters'' (give examples)---attempt to
+    support more general relations within schema
   \item Confidence levels modelled
   \item Same database used for user logins / editorial control as for
     content records---expectation that data managed ``within ECOLM''
+  \item Degree of rigour in organisation means that, while it may be
+    tricky to convert or adapt to another format or system, such an
+    effort will probably succeed without too many loose ends
   \end{itemize}
   
   \subsubsection{lutemusic.org}
@@ -220,7 +225,9 @@
     Fronimo files
   \item Website presents the filesystem hierarchy directly (entirely
     static, uses web server index pages, nothing generated)
-  \end{itemize}    
+  \item Irregular organisation may make adaptation relatively high
+    risk
+  \end{itemize}
 
   \subsubsection{mss.slweiss.de}
 
@@ -228,13 +235,28 @@
   \item PHP web application driven entirely from CSV files (actually
     semicolon-separated rather than comma-separated)
   \item Flat directory containing one CSV file per source
-  \item Incipits are in the CSV files, in ABC format, rendered to SVG
-    from the PHP scripts for serving to browser
+  \item Incipits embedded in the CSV files, in ABC format, rendered to
+    SVG from the PHP scripts for serving to browser
   \item Separate index CSV files list manuscript metadata and
     concordances
+  \item Version-controlled since 2013
+  \item Organisation seems tidy and easy to deal with
   \end{itemize}
     
   \subsubsection{Lute Society}
+
+  \begin{itemize}
+  \item Lute News facsimiles and transcriptions organised by issue
+  \item Organisation is on filesystem, with PDFs and transcriptions of
+    both text and tablature
+  \item Simple front-end added by Tim
+    Crawford\footnote{https://doc.gold.ac.uk/~mas01tc/jhr\_web/}
+    provides a web index via Javascript requests from client
+  \item Seems well arranged, the biggest problem looks like the wide
+    variety of types of material present and the original linear
+    organisation for readers and players
+  \end{itemize}
+  
   \subsubsection{Phal\`ese}
 
   \subsection{Other Related Sites}

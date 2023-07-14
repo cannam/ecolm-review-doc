@@ -1,4 +1,51 @@
 
+Misc notes on data formats:
+
+ECOLM
+=====
+
+No foreign keys defined (they are used, just not defined as such)
+
+Column names contain spaces and capitals which is unusual nowadays
+
+Rather specific definitions of "piece" and "work":
+
+ Piece - a single musical entity within a specified source; multiple
+ instances of a work are considered separate pieces
+
+ Work - a cluster of pieces in different sources that all represent
+ the same musical work
+
+So e.g. Dowland is only identified as composer of a few pieces:
+
+sqlite> select * from People where `Person Surname` = 'Dowland';
+33|John Dowland|Dowland|1||1
+131|Robert Dowland|Dowland|1||1
+sqlite> select * from Pieces, `Piece_People` where Pieces.`Piece ID` = `Piece_People`.`Piece ID` and `Piece_People`.`Person ID` = 33;
+141|30||MS|Almande/ R: D: -- Almande/ Ro[bert]: Dowlande||c|2|French||||0||15|141|33|Scribe|Probable|Except alternative ending provided after main text
+1552|50|||GAlliarda Ioannis Doland.|||0|French||||0||291|1552|33|Composer|Probable|
+1622|50|||ALlemande|||0|French||||0||328|1622|33|Composer|Probable|
+1645|50|||CHorea Anglicana Doolandi|||0|French||||0||348|1645|33|Composer|Probable|
+1766|50|||FAntasia Ioannis Doolandi.|||0|French||||0||363|1766|33|Composer|Probable|
+1581|50|||GAlliarda Ioannis Dooland|||0|French||||0||366|1581|33|Composer|Probably incorrect|
+2766|3|||Pavana tertia.||D|0|||||0||397|2766|33|Composer|Probable|
+2796|3|||GAlliardo 2.||c|0|||||0||414|2796|33|Composer|Probable|
+2801|3|||GAlliarda. 6.||d|0|||||0||418|2801|33|Composer|Probable|
+
+But via clusters:
+
+sqlite> select Clusters.`Cluster ID`, Clusters.`ClusterType ID`, Clusters.`Cluster Name`, Cluster_People.`ClusterPerson Comments` from Clusters, `Cluster_People` where Cluster_People.`Cluster ID` = Clusters.`Cluster ID` and Cluster_People.`Person ID` = 33;
+1|1|Lachrimae|Composer of exemplar
+4|1|TEST|Fake
+6|16|Orlando|Possible composer.  Credited in Dd 2.11
+13|16|Solus cum sola|
+sqlite> select count(*) from Cluster_Pieces where `Cluster ID` = 1;
+105
+sqlite> select * from Cluster_Types where `ClusterType ID` = 1 or `ClusterType ID` = 16;
+1|Project|Simple group - no implicit meaning
+16|Work|Group of pieces that are considered to be examples of a named piece
+
+
 RISM
 ====
 

@@ -1,0 +1,26 @@
+
+RISM
+====
+
+RISM serves RDF/Turtle and JSON-LD through content-negotiation on URI:
+
+$ curl -L -H "Accept: text/turtle" https://rism.online/sources/990015239
+$ curl -L -H "Accept: application/ld+json" https://rism.online/sources/990015239
+
+It also exposes MARCXML and RDF/XML through its OPAC web interface:
+
+$ curl https://opac.rism.info/id/rismid/990015239?format=marc
+$ curl https://opac.rism.info/id/rismid/990015239?format=rdf
+
+The two are not the same! The rism.online interface uses rism.online
+URIs for most things and expands some simple literals into entities.
+
+e.g. a Turtle conversion of the OPAC RDF/XML gives relations like
+
+<http://data.rism.info/id/rismid/990015239> dc:subject "Pavans"
+
+while the rism.online Turtle has
+
+<https://rism.online/sources/990015239> rism:hasSubject <https://rism.online/subjects/25423> .
+<https://rism.online/subjects/25423> a rism:Subject ; rdfs:label "Pavans"@none ; rdf:value "Pavans" .
+

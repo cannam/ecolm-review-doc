@@ -13,14 +13,48 @@ $ curl https://opac.rism.info/id/rismid/990015239?format=marc
 $ curl https://opac.rism.info/id/rismid/990015239?format=rdf
 
 The two are not the same! The rism.online interface uses rism.online
-URIs for most things and expands some simple literals into entities.
+URIs for most things and expands some simple literals into
+entities. I'm faintly surprised by this.
 
 e.g. a Turtle conversion of the OPAC RDF/XML gives relations like
 
-<http://data.rism.info/id/rismid/990015239> dc:subject "Pavans"
+<http://data.rism.info/id/rismid/990015239> dc:subject "Pavans" .
 
 while the rism.online Turtle has
 
 <https://rism.online/sources/990015239> rism:hasSubject <https://rism.online/subjects/25423> .
 <https://rism.online/subjects/25423> a rism:Subject ; rdfs:label "Pavans"@none ; rdf:value "Pavans" .
 
+If an incipit is present, it is encoded thus in the OPAC RDF/XML
+
+<http://data.rism.info/id/rismid/220003021> bsbmo:incipit "4.''D6{C'B}/4A''F+/8{F6EF}{8ED}/2E/" .
+
+and thus in rism.online
+
+<https://rism.online/sources/220003021> rism:hasIncipit <https://rism.online/sources/220003021/incipits/1.1.1> .
+<https://rism.online/sources/220003021/incipits/1.1.1> a rism:Incipit ;
+    rdfs:label "1.1.1"@none ;
+    rism:hasEncoding [ rdfs:label "Unbekannt"@de,
+                "Unknown"@en,
+                "Desconcido"@es,
+                "Inconnu"@fr,
+                "Sconosciuto"@it,
+                "Nieznane"@pl,
+                "Desconhecido"@pt ;
+            rism:meiEncoding "https://rism.online/sources/220003021/incipits/1.1.1/mei"^^xsd:anyURI ],
+        [ rdfs:label "Plaine and Easie Code"@de,
+                "Plaine and Easie code"@en,
+                "Código Plaine and Easie"@es,
+                "Code Plaine and Easie"@fr,
+                "Codice Plaine and Easie"@it,
+                "Kod Plaine and Easie"@pl,
+                "Código Plaine and Easie"@pt ;
+            rism:paeEncoding "{\"clef\":\"G-2\",\"data\":\"4.''D6{C'B}/4A''F+/8{F6EF}{8ED}/2E/\",\"keysig\":\"n\",\"timesig\":\"2/4\"}"^^rdf:JSON ] ;
+    rism:hasPAEClef "G-2" ;
+    rism:hasPAEData "4.''D6{C'B}/4A''F+/8{F6EF}{8ED}/2E/" ;
+    rism:hasPAEKeysig "n" ;
+    rism:hasPAETimesig "2/4" .
+
+i.e. the PAE (https://www.iaml.info/plaine-easie-code) is encoded
+inline but the MEI is out of band (and does not appear in the OPAC
+resource).

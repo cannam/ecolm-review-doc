@@ -1,7 +1,7 @@
 
 \documentclass[twocolumn,10pt]{paper}
 \usepackage[a4paper,margin=0.8in]{geometry}
-
+\usepackage{graphicx}
 \usepackage[T1]{fontenc}
 \usepackage{tgschola}
 
@@ -268,6 +268,7 @@
   \subsubsection{Josquin Research Project}
   \subsubsection{DIAMM}
   \subsubsection{earlymusicsources.com}
+%  \subsubsection{earlymusiconline.org}
   \subsubsection{IMSLP}
 
   \section{Desirable Qualities of a Solution}
@@ -292,9 +293,18 @@
         XLS... much as I like e.g. RDF/Turtle, few people want to edit
         that or JSON-LD directly
     \end{itemize}
-  \item ability to provide more than one front-end 
+  \item ability to provide more than one front-end
+    \item multiple types of facsimile as well as potentially of
+      transcription---for example if a source has both Gerbode-edited
+      PNG and a detailed scan with limited editing, it would be useful
+      to retain both, with suitable metadata
   \item RISM indexing compatibility
   \item natively version-controlled
+  \item stable identifiers for works {\em and} for transcriptions, so
+    that the latter can be used in principle by other services
+    e.g. similarity
+  \item clear relation to identifiers in other sources (online or
+    offline) where available
   \end{itemize}
 
   
@@ -302,6 +312,19 @@
 
   \section{Proposed Path}
 
+  \begin{figure}[p]
+  \centering
+  \caption{ECOLM database schema: Record tables}
+  \includegraphics[width=\textwidth]{plot/records}
+  \end{figure}
+
+  \clearpage
+
+  \begin{figure}[p]
+  \centering
+  \caption{ECOLM database schema: Administrative and unreferenced tables}
+  \includegraphics[width=\columnwidth]{plot/admin}
+  \end{figure}
   
 \end{sloppypar}
 \end{document}

@@ -1,3 +1,3 @@
 
 review.pdf:	review.tex
-	pdflatex -halt-on-error $<
+	pdflatex -shell-escape -halt-on-error $<

@@ -1,6 +1,7 @@
 
 \documentclass[twocolumn,10pt]{paper}
 \usepackage[a4paper,margin=0.8in]{geometry}
+\usepackage{dblfloatfix}
 \usepackage{graphicx}
 \usepackage[T1]{fontenc}
 \usepackage{tgschola}
@@ -314,31 +315,74 @@
 
   \clearpage
 
-  \section{Schema Diagrams}
+  \section{Data representation in existing systems}
 
-  \begin{figure}[h]
+  \subsection{ECOLM II}
+  
+  \begin{figure*}[b]
   \centering
-  \caption{ECOLM II database schema (main tables)}
+  \caption{ECOLM II database schema (record tables)}
   \includegraphics[width=\textwidth]{plot/records}
   \label{fig:records}
-  \end{figure}
+  \end{figure*}
 
-%  \clearpage
-%  \begin{figure}[p]
-%  \centering
-%  \caption{ECOLM II database schema: Administrative and unreferenced tables}
-%  \includegraphics[width=\columnwidth]{plot/admin}
-%  \label{fig:admin}
-%  \end{figure}
+  ECOLM I and II store all data directly in a relational database. The
+  database contains both editorial tables, about users of ECOLM and
+  their contributions, and record tables, about the works in the
+  dataset. Figure \ref{fig:records} shows the record tables.
 
+  The schema models join relationships using either foreign keys
+  (e.g. {\tt Source ID} in {\tt Pieces}) or join tables (e.g. {\tt
+    Person\_Events}) depending on the presence of metadata about the
+  relationship.
+
+  ECOLM has specific definitions of ``piece'' and ``work''. A piece is
+  ``a single musical entity within a specified source'', while a work
+  is ``a cluster of pieces in different sources that all represent the
+  same musical work''. The database also uses ``cluster'' to record
+  groups other than works. For example, the ECOLM II database contains
+  only 9 ``pieces'' directly linked to John Dowland as composer or
+  scribe, but 109 ``pieces'' linked to him through clusters: 105 as
+  members of the Lachrimae ``group'' cluster, and 4 others through
+  ``work'' clusters.
+
+  The ECOLM schema is unusual today in using mixed-case naming with
+  spaces in the column names.
+  
   \clearpage
 
-  \begin{figure}[p]
+  \subsection{RISM Muscat web application}
+  
+  \begin{figure*}[b]
   \centering
-  \caption{RISM Muscat application schema summary}
+  \caption{RISM Muscat schema summary}
   \includegraphics[width=\textwidth]{plot/muscat}
   \label{fig:muscat}
-  \end{figure}
+  \end{figure*}
+
+  Muscat\footnote{https://rism.info/community/muscat.html} is a web
+  application published by RISM for cataloguing musical sources,
+  written using Ruby on Rails. Figure \ref{fig:muscat} shows the main
+  tables.
+
+  Muscat uses a hybrid schema, in that each table has a single {\tt
+    marc\_source} column containing an authoritative record in
+  MARC21\footnote{https://www.loc.gov/marc/} concise text format. Most
+  of the other columns are apparently used to ``cache'' data from the
+  MARC record that may be needed quickly for display or search. At
+  core, everything is represented using MARC.
+
+  Muscat also adds metadata, such as MARC tags, to joins (the arrows
+  in figure \ref{fig:muscat}) through the use of separate join tables.
+  
+  As an example, the core {\tt sources} table contains columns for
+  numerical RISM source ID, standardised title, manuscript title,
+  composer, shelf mark, language, and date, along with downcased
+  simplified versions of the composer and titles for search
+  purposes. But the authoritative data is found in the {\tt
+    marc\_source} column. There are no foreign key relations, as joins
+  are managed through join tables such as {\tt sources\_to\_people},
+  {\tt sources\_to\_sources} etc.
   
 \end{sloppypar}
 \end{document}

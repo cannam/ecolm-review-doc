@@ -1,5 +1,5 @@
 
-\documentclass[twocolumn,10pt]{paper}
+\documentclass[9pt,twocolumn]{extarticle}
 \usepackage[a4paper,margin=0.8in]{geometry}
 \usepackage{dblfloatfix}
 \usepackage{graphicx}
@@ -105,7 +105,7 @@
   %%!!! include section about other non-lute resources: RISM being the
   %%!!! most obvious but also anything else anyone else mentioned
   
-  \section{User Context}
+  \section{User Context}\label{user-context}
 
   We conducted informal interviews with three exemplary users of
   online early-music resources, in order to understand scholarly
@@ -211,6 +211,8 @@
     tricky to convert or adapt to another format or system, such an
     effort will probably succeed without too many loose ends
   \end{itemize}
+
+  See section \ref{ecolm-data} for more technical details.
   
   \subsubsection{lutemusic.org}
 
@@ -265,10 +267,76 @@
   \subsection{Other Related Sites}
   
   \subsubsection{RISM}
-  \subsubsection{Vihuela Database}
-  \subsubsection{Josquin Research Project}
+
+  RISM\footnote{https://rism.info/} (R\'epertoire International des
+  Sources Musicales) is a catalogue of musical sources. It ``documents
+  what exists and where it is
+  kept''\footnote{https://opac.rism.info/main-menu-/kachelmenu/about}. That
+  is, it is not a library but an index of libraries and the sources
+  they contain. It has a historical focus on physical sources rather
+  than abstract works (although this may be changing) and although
+  some records have incipits attached, it does not otherwise serve
+  musical content.
+
+  As we saw in section \ref{user-context}, musicologists routinely
+  expect sources to be indexed in RISM and may expect it to offer the
+  most authoritative source metadata.
+
+  The RISM project also publishes a web application for entry and
+  management of musical source catalogue data, called Muscat. See
+  section \ref{muscat-data} for details about the schema used by
+  Muscat.
+
+  RISM records are stored in MARC\footnote{https://www.loc.gov/marc/}
+  (Machine Readable Cataloging) format and are available as MARC or
+  RDF data via API.
+
   \subsubsection{DIAMM}
-  \subsubsection{earlymusicsources.com}
+
+  DIAMM\footnote{https://www.diamm.ac.uk/} (Digital Image Archive of
+  Medieval Music) is an archive of scanned manuscripts, mainly from
+  before 1600. It also indexes sources whose images are stored
+  elsewhere. Images are typically very high quality with accompanying
+  metadata describing the physical artifact in some detail.
+
+  DIAMM has an API providing metadata in a JSON encoding, though
+  apparently not RDF or JSON-LD.
+  
+  \subsubsection{Vihuela Database}
+
+  The Vihuela Database\footnote{https://vihuelagriffiths.com/} of John
+  Griffiths is a research-focused index of vihuela music and
+  information about the vihuela. It includes a browseable and
+  searchable list of pieces with incipits in image form and some text
+  commentary. Significant fantasia themes are indexed separately by
+  melody. The site does not appear to offer an API or data linking.
+
+  Our consulted lute performer/teacher praised this site for its clear
+  presentation of search results (figure \ref{fig:vihuela}) and
+  editorial commentary.
+  
+  \begin{figure}[h]
+  \centering
+  \caption{Vihuela Database search results example}
+  \includegraphics[width=\columnwidth]{images/vihuela-search-results}
+  \label{fig:vihuela}
+  \end{figure}
+  
+  \subsubsection{Josquin Research Project}
+
+  The Josquin Research Project\footnote{https://josquin.stanford.edu/}
+  from Jesse Rodin and Craig Sapp at Stanford is an index of early
+  polyphonic music with full digitised scores. It is driven from a
+  transparent catalogue of Humdrum-format scores, maintained under
+  version control in a Git repository with a submodule per composer
+  and available from the website in-page or via an API.
+
+  Our consulted computational musicologist praised this site for its
+  straightforward search interface, presentation of results including
+  useful details such as vocal range plots, and publication of raw
+  data for computational use.
+  
+%  \subsubsection{earlymusicsources.com}
 %  \subsubsection{earlymusiconline.org}
   \subsubsection{IMSLP}
 
@@ -289,11 +357,14 @@
   \item possibly ``immutable pipeline'' - rebuildable from source
     format that is friendly for humans to work with
     \begin{itemize}
-      \item note the formats that other maintainers actually choose to
+      \item but note the formats that other maintainers actually choose to
         use! CSV (probably exported from a spreadsheet) and
         XLS... much as I like e.g. RDF/Turtle, few people want to edit
         that or JSON-LD directly
     \end{itemize}
+  \item standard formats where they exist! e.g. always MEI unless
+    there's some very good reason
+  \item RDF
   \item ability to provide more than one front-end
     \item multiple types of facsimile as well as potentially of
       transcription---for example if a source has both Gerbode-edited
@@ -306,6 +377,10 @@
     e.g. similarity
   \item clear relation to identifiers in other sources (online or
     offline) where available
+    \begin{itemize}
+    \item particularly, cross-reference to RISM identifiers for
+      composers and sources (where they exist)
+    \end{itemize}
   \end{itemize}
 
   
@@ -317,7 +392,7 @@
 
   \section{Data representation in existing systems}
 
-  \subsection{ECOLM II}
+  \subsection{ECOLM II}\label{ecolm-data}
   
   \begin{figure*}[b]
   \centering
@@ -351,7 +426,7 @@
   
   \clearpage
 
-  \subsection{RISM Muscat web application}
+  \subsection{RISM Muscat web application}\label{muscat-data}
   
   \begin{figure*}[b]
   \centering

@@ -105,3 +105,12 @@ and thus in rism.online
 i.e. the PAE (https://www.iaml.info/plaine-easie-code) is encoded
 inline but the MEI is out of band (and does not appear in the OPAC
 resource).
+
+
+DIAMM
+=====
+
+Provides JSON by content negotiation. Dowland:
+
+$ curl -L -H "Accept: application/json" https://www.diamm.ac.uk/people/1770/
+

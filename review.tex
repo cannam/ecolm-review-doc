@@ -338,8 +338,20 @@
   
 %  \subsubsection{earlymusicsources.com}
 %  \subsubsection{earlymusiconline.org}
-  \subsubsection{IMSLP}
+  \subsubsection{IMSLP / Petrucci}
 
+  IMSLP (the International Music Score Library Project or Petrucci
+  Music Library) is a very widely used crowd-sourced library of
+  public-domain and Creative Commons licensed sheet music. Managed
+  using MediaWiki, it makes a priority of encouraging community
+  contributions over authoritative editorial review. Works are often
+  available in multiple versions including scans and transcriptions,
+  typically rendered as PDFs rather than in machine-readable
+  form. Depending on the composition, works may feature in full score,
+  parts, and arrangements, and tablature often appears where
+  applicable. There is some linkage to other informal resources such
+  as Wikipedia as well as to formal authorities such as VIAF.
+  
   \section{Desirable Qualities of a Solution}
   \subsection{Social}
 
@@ -351,9 +363,32 @@
   
   \subsection{Technical}
 
+  \subsubsection{Required}
+  
   \begin{itemize}
   \item ability to continue to absorb upstream changes, for
     adaptations of datasets that are also being maintained elsewhere
+  \item standard formats where they exist! e.g. always MEI unless
+    there's some very good reason
+  \item automated testing for format conversions (e.g. from external sources)
+  \item data served through API
+  \item stable identifiers for works {\em and} for transcriptions, so
+    that the latter can be used in principle by other services
+    e.g. similarity
+  \item disambiguation of sources among multiple datasets
+  \item clear relation to identifiers in other sources (online or
+    offline) where available
+    \begin{itemize}
+    \item particularly, cross-reference to RISM identifiers for
+      composers and sources (where they exist)
+    \end{itemize}
+
+  \end{itemize}
+
+  \subsubsection{Desired}
+  
+  \begin{itemize}
+  \item RDF
   \item possibly ``immutable pipeline'' - rebuildable from source
     format that is friendly for humans to work with
     \begin{itemize}
@@ -362,25 +397,13 @@
         XLS... much as I like e.g. RDF/Turtle, few people want to edit
         that or JSON-LD directly
     \end{itemize}
-  \item standard formats where they exist! e.g. always MEI unless
-    there's some very good reason
-  \item RDF
   \item ability to provide more than one front-end
-    \item multiple types of facsimile as well as potentially of
-      transcription---for example if a source has both Gerbode-edited
-      PNG and a detailed scan with limited editing, it would be useful
-      to retain both, with suitable metadata
+  \item multiple types of facsimile as well as potentially of
+    transcription---for example if a source has both Gerbode-edited
+    PNG and a detailed scan with limited editing, it would be useful
+    to retain both, with suitable metadata
   \item RISM indexing compatibility
   \item natively version-controlled
-  \item stable identifiers for works {\em and} for transcriptions, so
-    that the latter can be used in principle by other services
-    e.g. similarity
-  \item clear relation to identifiers in other sources (online or
-    offline) where available
-    \begin{itemize}
-    \item particularly, cross-reference to RISM identifiers for
-      composers and sources (where they exist)
-    \end{itemize}
   \end{itemize}
 
   

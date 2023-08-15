@@ -1,10 +1,12 @@
 
-\documentclass[9pt,twocolumn]{extarticle}
-\usepackage[a4paper,margin=0.8in]{geometry}
-\usepackage{dblfloatfix}
-\usepackage{graphicx}
-\usepackage[T1]{fontenc}
-\usepackage{tgschola}
+\documentclass[sigconf]{acmart}
+%\documentclass[9pt,twocolumn]{extarticle}
+%\usepackage[a4paper,margin=0.8in]{geometry}
+%\usepackage{dblfloatfix}
+%\usepackage{graphicx}
+\usepackage{tabularx}
+%\usepackage[T1]{fontenc}
+%\usepackage{tgschola}
 
 \begin{document}
 \title{ECOLM Futures Review}
@@ -14,8 +16,12 @@
   
   %\begin{abstract}
   %\end{abstract}
-  
-  {\bf Status: Preliminary thought-dump}
+
+  \begin{itemize}
+    \item {\bf STATUS Preliminary thought-dump}
+    \item {\bf TODO Eliminate almost all of the bulleted lists, turning into
+      prose or something else such as tables}
+  \end{itemize}
   
   \section{Background and Motivation}
 
@@ -77,19 +83,21 @@
 
   Several other collections of lute music have been placed online by
   various curators. Some of these are licensed appropriately for
-  inclusion in any future dataset, or have been offered for this use.
-  In some cases there are concerns about their ongoing sustainability
-  that make it particularly desirable to include them in future work.
+  inclusion in any future dataset, some have been offered for this
+  use, and in some cases there are also concerns about their ongoing
+  sustainability. Therefore we would prefer a solution with the
+  potential to incorporate and maintain data from these resources as
+  well.
 
   \begin{itemize}
-    \item {\bf Lutemusic.org}\footnote{https://lutemusic.org/} curated
-      by Sarge Gerbode. Around 20,000 encodings in playing editions
-      with semi-structured metadata, informally curated with limited
-      version tracking or editorial notes.
     \item {\bf Mss.slweiss.de}\footnote{https://mss.slweiss.de/}
       curated by Peter Steur and the late Markus Lutz. A metadata
       catalogue of around 68,000 listings of which the majority have
       incipits (opening ideas) encoded.
+    \item {\bf Lutemusic.org}\footnote{https://lutemusic.org/} curated
+      by Sarge Gerbode. Around 20,000 encodings in playing editions
+      with semi-structured metadata, informally curated with limited
+      version tracking or editorial notes.
     \item {\bf Lute Society publications} curated by John
       Robinson. Scans from printed periodicals intended for players,
       containing around 7,000 encodings consisting of printed music,
@@ -102,10 +110,37 @@
       %% licence terms, how widely used
   \end{itemize}
 
+  \renewcommand{\arraystretch}{1.2}
+  \setlength{\tabcolsep}{4pt}
+  
+  \begin{table*}[t]
+  \caption{Status of data and metadata in online lute tablature resources}
+  \small
+      \begin{tabularx}{\textwidth}{|l|X|X|X|X|X|X|X|X|X|}
+        \hline
+        & \multicolumn{4}{|c|}{\bf Data} & \multicolumn{5}{|c|}{\bf Metadata} \\
+        \hline
+        & Encoded tablature & OTR scanned pages & Facsimile images & Published PDFs
+        & Works linked to encodings & Ordered work-lists & Textual commentary & Textual references to models & Structured metadata \\
+        \hline
+            {ECOLM I/II} & Yes & Partial & Yes & & Yes & Yes & & Partial & Yes \\
+        \hline
+            {Mss.slweiss.de} & Yes & & & & & Yes & & & Partial \\
+        \hline
+            {Lutemusic.org} & Yes & & Partial & Yes & Partial & & & & Partial \\
+        \hline
+            {Lute Society} & Yes &  & & Yes & & Yes & Yes & Yes & \\
+        \hline
+            {Phal\`ese} & Yes & & & Yes & Partial & Partial & Yes & Yes & \\
+            \hline
+      \end{tabularx}
+  \label{table:datasets}
+  \end{table*}
+  
   %%!!! include section about other non-lute resources: RISM being the
   %%!!! most obvious but also anything else anyone else mentioned
   
-  \section{User Context}\label{user-context}
+  \section{Understanding User Context}\label{user-context}
 
   We conducted informal interviews with three exemplary users of
   online early-music resources, in order to understand scholarly
@@ -213,6 +248,20 @@
   \end{itemize}
 
   See section \ref{ecolm-data} for more technical details.
+
+  \subsubsection{mss.slweiss.de}
+
+  \begin{itemize}
+  \item PHP web application driven entirely from CSV files (actually
+    semicolon-separated rather than comma-separated)
+  \item Flat directory containing one CSV file per source
+  \item Incipits embedded in the CSV files, in ABC format, rendered to
+    SVG from the PHP scripts for serving to browser
+  \item Separate index CSV files list manuscript metadata and
+    concordances
+  \item Version-controlled since 2013
+  \item Organisation seems tidy and easy to deal with
+  \end{itemize}
   
   \subsubsection{lutemusic.org}
 
@@ -233,20 +282,6 @@
   \item Irregular organisation may make adaptation relatively high
     risk
   \end{itemize}
-
-  \subsubsection{mss.slweiss.de}
-
-  \begin{itemize}
-  \item PHP web application driven entirely from CSV files (actually
-    semicolon-separated rather than comma-separated)
-  \item Flat directory containing one CSV file per source
-  \item Incipits embedded in the CSV files, in ABC format, rendered to
-    SVG from the PHP scripts for serving to browser
-  \item Separate index CSV files list manuscript metadata and
-    concordances
-  \item Version-controlled since 2013
-  \item Organisation seems tidy and easy to deal with
-  \end{itemize}
     
   \subsubsection{Lute Society}
 
@@ -264,7 +299,7 @@
   
   \subsubsection{Phal\`ese}
 
-  \subsection{Other Related Sites}
+  \subsection{Other Sites of Interest}
   
   \subsubsection{RISM}
 
@@ -382,6 +417,8 @@
     \item particularly, cross-reference to RISM identifiers for
       composers and sources (where they exist)
     \end{itemize}
+  \item ability to handle substantial textual and other unstructured
+    data including diagrams and multimedia
 
   \end{itemize}
 
@@ -409,12 +446,90 @@
   
   \subsection{User Experience}
 
-  \section{Proposed Path}
+  \section{Possible Paths}
 
+  \subsection{``Enhanced ECOLM''}
+
+  Relational database derived from current ECOLM
+
+  Advantages
+
+  \begin{itemize}
+  \item preserves existing code; first set of data already imported
+  \item somewhat structured, encouraging consistency
+  \item some good domain-specific decisions made in the schema design
+  \item importing other data is work in the mature field of ETL with
+    corresponding tooling etc
+  \item can focus on user interfaces and data conversion rather than
+    rebuilding representation from scratch
+  \end{itemize}
+
+  Disadvantages
+
+  \begin{itemize}
+  \item versioning is difficult
+  \item does not solve the stable identifiers problem
+  \item has proven somewhat overspecified for its current use
+    (e.g. data maturity fields bodged)
+  \item little in common with other solutions people have used, so all
+    import/export is custom
+  \item cannot easily drop in other ``views'' apart from any we have
+    written ourselves
+  \item providing APIs is manual work
+  \end{itemize}
+
+  \subsection{Graph-based}
+
+  Fundamental representation is a graph of triples in the RDF mould;
+  all metadata converted to that for import and from it for query;
+  data such as transcriptions, multimedia etc referred to by
+  identifiers in the same space (e.g. URIs)
+
+  Advantages
+
+  \begin{itemize}
+    \item widely understood model, not least because other systems
+      often make RDF available via API. Although no longer trendy, RDF
+      has not died out and probably won't do soon
+    \item lowest-common-denominator representation as target for data
+      conversions
+    \item not too awful for versioning (even just using git, with
+      Turtle or JSON-LD)
+    \item good target for ``idempotent'' one-way conversion flows,
+      supporting automated tests for reliability, offering possibility
+      to integrate ongoing upstream changes
+    \item makes serving data via API almost free
+    \item in principle can use existing tools for review, query,
+      inferencing, format conversion
+  \end{itemize}
+
+  Disadvantages
+
+  \begin{itemize}
+    \item in practice using existing tools for inferencing means
+      entering the world of galaxy-brained semantic web savants
+    \item normal people do not choose to hand-maintain data in triples
+      of URIs, so none of our candidate datasets use this format ---
+      it's no CSV
+    \item commonplace ontology mismatch giving ``silently missing
+      data'' problems on query --- good testing strongly advised
+    \item similarly, typeless or with awkward typing
+    \item problem of which ontology to target does not appear to have
+      a single best solution (and we don't really want to be in the
+      business of developing one)
+    \item no built-in solution to problem of identifying and
+      retrieving bulkier data such as images
+  \end{itemize}
+
+  \subsection{``RISM-aligned''}
+
+  Fundamental metadata representation is MARC, and we use Muscat to
+  maintain it? 
+  
   \clearpage
 
   \section{Data representation in existing systems}
-
+  
   \subsection{ECOLM II}\label{ecolm-data}
   
   \begin{figure*}[b]

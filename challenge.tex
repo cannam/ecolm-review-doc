@@ -75,28 +75,65 @@
 
   \section{Nature and purpose of the sustainable tool or resource}
 
-  {\bf ECOLM} (1999-2002) was a project run by Tim Crawford which
-  developed and populated a queryable database of lute tablature
-  encodings with metadata using a web interface. Subsequent projects
-  {\bf ECOLM II} (2002-2006) and {\bf ECOLM III} (2012) expanded the
-  database and used it for some computational musicological
-  investigations. The resulting database was hosted on a public-facing
-  web server at Goldsmiths, University of
-  London.\footnote{http://doc.gold.ac.uk/isms/ecolm/database/} It is
-  still running today, although nobody is formally responsible for
+  {\bf ECOLM} (1999-2002) was a project led by Tim Crawford which
+  developed and populated a database of lute tablature encodings with
+  metadata, for scholarly use, queried using a web
+  interface. Subsequent projects {\bf ECOLM II} (2002-2006) and {\bf
+    ECOLM III} (2012) expanded the database and used it for some
+  computational musicological investigations. The resulting database
+  was hosted on a public-facing web server at Goldsmiths, University
+  of London.\footnote{http://doc.gold.ac.uk/isms/ecolm/database/} It
+  is still running today, although nobody is formally responsible for
   maintaining it.
 
   ECOLM is a relatively small scholarly resource with around 2,000
   carefully-curated encodings. A number of other public lute tablature
-  resources exist, of variable size, quality, and consistency (see
+  resources exist, of varying size, quality, and consistency (see
   section \ref{audience}). These typically face challenges to
   sustainability similar to those of ECOLM (see section
-  \ref{challenges}). It seems reasonable to try to address those
-  challenges for such resources in general, at least insofar as they
-  are useful to the same audience. Some of the maintainers of other
-  resources have offered to contribute their data to such an effort.
+  \ref{challenges}). It seems useful to consider those challenges for
+  such resources in general, at least insofar as they address the same
+  audience.
   
   \section{Audience and users, disciplines and subjects}\label{audience}
+
+  We are considering here the sustainability of at least five lute
+  tablature datasets: ECOLM itself; {\bf
+    lutemusic.org}\footnote{https://lutemusic.org/} by Sarge Gerbode;
+  {\bf mss.slweiss.de}\footnote{https://mss.slweiss.de/} curated by
+  Peter Steur and the late Markus Lutz; a set of scans from {\bf Lute
+    Society publications} curated by John Robinson; and a set of
+  transcriptions of {\bf editions by Pierre Phal\`ese} curated by Jan
+  Burgers. All of these are either Creative Commons licensed or have
+  been offered by their maintainers as possible constituents of a
+  future combined tablature resource.
+
+  These resources serve a spectrum of audiences. At one end,
+  lutemusic.org aims at performers and includes edited transcriptions
+  with relatively little scholarly metadata or editorial comment. At
+  the other, ECOLM is aimed at computational musicologists and
+  prioritises diplomatic facsimiles and transcriptions that preserve
+  original scribal idiosyncracies.
+
+  In this review we are particularly interested in sustainability for
+  musicology and other academic purposes. To this end, we asked three
+  exemplary users of online early-music resources---a musicologist, a
+  computational musicologist, and a lute teacher---for their views
+  about them in order to understand scholarly expectations.
+
+  Briefly, they agreed on the importance of trust and provenance,
+  particularly in knowing about the quality of transcription and level
+  of editorial intervention in a resource. There was some consensus
+  about the value of simple search with subsequent refinement, of
+  cleanly laid-out results including inline incipits, and of API and
+  data provision. Resources mentioned as worth learning from included
+  DIAMM\footnote{https://www.diamm.ac.uk/} (Digital Image Archive of
+  Medieval Music), the Vihuela
+  Database,\footnote{https://vihuelagriffiths.com/} the Josquin
+  Research Project,\footnote{https://josquin.stanford.edu/} and
+  RISM\footnote{https://rism.info/} (R\'epertoire International des
+  Sources Musicales) which is a near-ubiquitous entry point for
+  musicological queries.
   
   \section{Challenges for sustainability}\label{challenges}
 
@@ -107,10 +144,10 @@
   
   \subsection{``Enhanced ECOLM''}
 
-  This approach retains the relational data schema of the existing
-  ECOLM, which is detailed and fairly effective, although it has
-  little in common with the other systems we have considered or with
-  wider current practice. We then provide ETL-type (extract,
+  This approach would retain the relational data schema of the
+  existing ECOLM, which is detailed and fairly effective, although it
+  has little in common with the other systems we have considered or
+  with wider current practice. We then provide ETL-type (extract,
   transform, load) data loaders for other sources of interest.
 
   Advantages of this approach include the ability to preserve existing
@@ -133,8 +170,8 @@
 
   \subsection{Graph-based}
 
-  In this approach we take the fundamental representation to be a
-  graph of triples in the model of RDF, and convert all metadata to
+  In this approach we would take the fundamental representation to be
+  a graph of triples in the model of RDF, and convert all metadata to
   that for import and from it for query. External data such as
   transcriptions and multimedia resources are identified by
   graph-relatable identifiers such as URIs.

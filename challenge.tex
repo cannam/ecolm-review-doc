@@ -144,27 +144,30 @@
   
   \subsection{``Enhanced ECOLM''}
 
-  This approach would retain the relational data schema of the
+  In this approach, we retain the relational data schema of the
   existing ECOLM, which is the only one of the datasets under
   consideration to have a formal schema, and provide ETL (extract,
-  transform, load) data loaders for other sources. The ECOLM schema is
-  detailed and fairly effective, although it has little in common with
-  the ad-hoc methods of the other datasets or with wider current
-  practice.
+  transform, load) data loaders for other sources. We then publish the
+  schema, data dumps, and automation to rebuild or mirror the data,
+  along with the code of our query interface and encourage others to
+  attach their own interfaces or tools to it.
 
   Advantages of this approach include the ability to preserve existing
   code and to use original ECOLM records as a reference. The existing
-  schema provides appropriate structure and reflects some good
-  domain-specific decisions. Relational data import is a well
-  understood field, and we could focus on user interfaces and data
-  conversion rather than any novelty of data representation.
+  schema is detailed and fairly effective, provides appropriate
+  structure, and reflects some good domain-specific
+  decisions. Relational data import is a well understood field, and we
+  could focus on user interfaces and data conversion rather than any
+  novelty of data representation. If the work fails, the result should
+  be at minimum a more open publication of the existing ECOLM.
 
   Disadvantages include that the schema has little in common with any
   of the ad-hoc solutions other maintainers have settled on, so all
-  import and export would be custom. The schema is perhaps already
-  overspecified for its current use, yet does not address any problems
-  relating to stable identifiers, versioning, or providing queryable
-  APIs or data sources.
+  import and export would be custom. It also has little in common with
+  wider current practice. The schema is perhaps already overspecified
+  for its current use, yet does not address any problems relating to
+  stable identifiers, versioning, or providing queryable APIs or data
+  sources.
 
   Although we could at least initially reuse the existing user
   interface, it is no longer considered a strength of ECOLM and would
@@ -172,8 +175,8 @@
 
   \subsection{Graph-based}
 
-  In this approach we would take the fundamental representation to be
-  a graph of triples in the model of RDF, and convert all metadata to
+  In this approach, we take the fundamental representation to be a
+  graph of triples in the model of RDF, and convert all metadata to
   that for import and from it for query. External data such as
   transcriptions and multimedia resources are identified by
   graph-relatable identifiers such as URIs.
@@ -185,7 +188,10 @@
   reasonably amenable to versioning and to use of ``idempotent''
   import flows with automated testing, offering the option of ongoing
   import of changes in upstream sources. In principle existing tools
-  may be used for review, query, inferencing, and format conversion.
+  may be used for review, query, inferencing, and format
+  conversion. The use of standard formats with automated tests could
+  lead to a result far more easily maintained or mirrored by third
+  parties.
 
   The approach has difficulties as well. It discards the existing user
   interface work and requires even the existing ECOLM data to be
@@ -206,13 +212,14 @@
   
   \subsection{``RISM-aligned''}
 
-  This approach would concentrate on compatibility with formats and
-  also perhaps software used by RISM. The motivating principle would
-  be that, although our sources are not all of the ``library
-  standard'' indexed by RISM, we want to facilitate linkage (now or in
-  the future) for those that are, and to be prepared if in the future
-  RISM should grow to cover the whole area of directly represented
-  lute tablature.
+  In this approach, we concentrate on compatibility with formats and
+  software used by RISM. The motivating principle is that RISM is the
+  dominant ``entry point'' in this field and, although our sources are
+  not all of the standard indexed by RISM, we want to facilitate
+  linkage (now or in future) for those that are, and to be prepared if
+  in the future RISM should grow to cover the whole area of directly
+  represented lute tablature. The ideal future would involve replacing
+  this project entirely with an aspect of RISM.
 
   In this approach the metadata representation might be
   MARC\footnote{https://www.loc.gov/marc/} (Machine Readable

@@ -111,7 +111,7 @@
   These resources serve a spectrum of audiences. At one end,
   lutemusic.org aims at performers and includes edited transcriptions
   with relatively little scholarly metadata or editorial comment. At
-  the other, ECOLM is aimed at computational musicologists and
+  the other, ECOLM was aimed at computational musicologists and
   prioritises diplomatic facsimiles and transcriptions that preserve
   original scribal idiosyncracies.
 
@@ -124,11 +124,11 @@
   Briefly, they agreed on the importance of trust and provenance,
   particularly in knowing about the quality of transcription and level
   of editorial intervention in a resource. There was some consensus
-  about the value of simple search with subsequent refinement, of
-  cleanly laid-out results including inline incipits, and of API and
-  data provision. Resources mentioned as worth learning from included
-  DIAMM\footnote{https://www.diamm.ac.uk/} (Digital Image Archive of
-  Medieval Music), the Vihuela
+  about the value of simple search with subsequent refinement, of a
+  cleanly-designed results layout including inline incipits, and of
+  API and data provision. Resources regarded as worth studying
+  included DIAMM\footnote{https://www.diamm.ac.uk/} (Digital Image
+  Archive of Medieval Music), the Vihuela
   Database,\footnote{https://vihuelagriffiths.com/} the Josquin
   Research Project,\footnote{https://josquin.stanford.edu/} and
   RISM\footnote{https://rism.info/} (R\'epertoire International des
@@ -145,10 +145,12 @@
   \subsection{``Enhanced ECOLM''}
 
   This approach would retain the relational data schema of the
-  existing ECOLM, which is detailed and fairly effective, although it
-  has little in common with the other systems we have considered or
-  with wider current practice. We then provide ETL-type (extract,
-  transform, load) data loaders for other sources of interest.
+  existing ECOLM, which is the only one of the datasets under
+  consideration to have a formal schema, and provide ETL (extract,
+  transform, load) data loaders for other sources. The ECOLM schema is
+  detailed and fairly effective, although it has little in common with
+  the ad-hoc methods of the other datasets or with wider current
+  practice.
 
   Advantages of this approach include the ability to preserve existing
   code and to use original ECOLM records as a reference. The existing
@@ -165,8 +167,8 @@
   APIs or data sources.
 
   Although we could at least initially reuse the existing user
-  interface, it is no longer considered a strength of the system and
-  would need some work to update to modern expectations.
+  interface, it is no longer considered a strength of ECOLM and would
+  need some work to update to modern expectations.
 
   \subsection{Graph-based}
 
@@ -179,11 +181,11 @@
   Advantages include the use of a widely-understood and accepted model
   that meets common expectations about data compatibility and API
   provision. For schema we can draw ontologies from a number of
-  existing systems. The structure is reasonably amenable to versioning
-  and to use of ``idempotent'' import flows with automated testing,
-  offering the option of ongoing import of changes in upstream
-  sources. In principle existing tools may be used for review, query,
-  inferencing, and format conversion.
+  existing systems including the widely-used RISM. The structure is
+  reasonably amenable to versioning and to use of ``idempotent''
+  import flows with automated testing, offering the option of ongoing
+  import of changes in upstream sources. In principle existing tools
+  may be used for review, query, inferencing, and format conversion.
 
   The approach has difficulties as well. It discards the existing user
   interface work and requires even the existing ECOLM data to be
@@ -204,8 +206,19 @@
   
   \subsection{``RISM-aligned''}
 
-  Fundamental metadata representation is MARC, and we use Muscat to
-  maintain it? 
+  This approach would concentrate on compatibility with formats and
+  also perhaps software used by RISM. The motivating principle would
+  be that, although our sources are not all of the ``library
+  standard'' indexed by RISM, we want to facilitate linkage (now or in
+  the future) for those that are, and to be prepared if in the future
+  RISM should grow to cover the whole area of directly represented
+  lute tablature.
+
+  In this approach the metadata representation might be
+  MARC\footnote{https://www.loc.gov/marc/} (Machine Readable
+  Cataloging) as it is within RISM, and possibly the RISM
+  Muscat\footnote{https://rism.info/community/muscat.html} application
+  might be used for management.
   
 \end{sloppypar}
 \end{document}

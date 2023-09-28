@@ -37,15 +37,6 @@
 \maketitle
 \begin{sloppypar}
   
-  %\begin{abstract}
-  %\end{abstract}
-
-  \begin{itemize}
-    \item {\bf STATUS Preliminary thought-dump}
-    \item {\bf TODO Eliminate almost all of the bulleted lists, turning into
-      prose or something else such as tables}
-  \end{itemize}
-  
   \section{Background and Motivation}
 
   \subsection{What is ECOLM?}
@@ -137,8 +128,8 @@
       %% licence terms, how widely used
   \end{itemize}
 
-  There are concerns about the ongoing sustainability of all of these,
-  similar to those about ECOLM: curation and maintenance by
+  There are concerns about the ongoing sustainability of many of
+  these, similar to those about ECOLM: curation and maintenance by
   individuals or small groups of enthusiasts, in some cases of
   retirement age; maintenance in limited periods of spare time,
   perhaps following initial short-term funding; data management using
@@ -482,141 +473,222 @@
   \section{Desirable Qualities of a Solution}\label{desirable-qualities}
   \subsection{Social}
 
-  \begin{itemize}
-  \item talk about types of user and their expectations
-  \item talk about crowdsourcing and ECOLM III
-  \end{itemize}
+  We see three requirements for a socially sustainable outcome:
 
+  \begin{enumerate}
+  \item Sufficient immediate utility to our audience(s) to justify our
+    work and to ensure that users are invested in the outcome;
+  \item Sufficient scholarly quality to ensure that the outcome is
+    genuinely helpful in expanding and improving the work that our
+    users are able to do;
+  \item Sufficiently accessible and robust technical choices to enable
+    other enthusiast users to maintain and contribute to the outcome
+    without substantial difficulty or risk of causing damage.
+  \end{enumerate}
+
+  Bluntly, we need to (1) hook users, (2) genuinely help them to do
+  their best work, and (3) make it possible for the keenest
+  technically-minded ones to pick up where we left off.
+  
+  Points (1) and (2) were touched on several times in our interviews
+  with exemplary users outlined in section \ref{user-context}. Their
+  remarks about simple and accessible search functions, clear
+  presentation of results with incipits, integration with RISM, and
+  the habit of using the largest available dataset are all examples of
+  point (1). Their remarks about trust, provenance, editorial quality
+  and history, and availability of data through an API are examples of
+  (2). Their references to other sites and datasets they refer to span
+  both.
+
+  For point (3) we can look to past examples from the same field and
+  elsewhere. Two obvious types of ongoing contribution are
+  crowd-sourcing (contributing to the existing artifact) and
+  mirror/fork replication (producing another artifact based on the
+  first).
+
+  There are of course many successful crowd-sourced projects, although
+  success in encouraging contributions in content can lead to even
+  more difficulty in sustainable hosting or maintenance. The ECOLM III
+  project attempted to crowd-source corrections for optical musical
+  recognition output, with limited success, perhaps because
+  contributors did not immediately get to use the fruits of their
+  labour. Some other lute tablature resources employ old-school
+  informal crowd-sourcing (simply encouraging people to send
+  contributions to a human maintainer) with arguably more success.
+
+  Supporting replication via mirroring or forking is a separate issue
+  from crowd-sourcing and is arguably essential for a system of this
+  type nowadays. It calls for publication of source code and data,
+  replicable scripted testing and data population, versioning and the
+  ability to merge dataset updates, and ideally a system for
+  generating identifiers that is stable across instances. Some of
+  these matters will be touched on in the technical requirements
+  below.
   
   \subsection{Technical}
 
+  We have divided technical qualities into required (inadvisable to
+  ignore when choosing an approach) and desired.
+  
   \subsubsection{Required}
   
   \begin{itemize}
-  \item ability to continue to absorb upstream changes, for
-    adaptations of datasets that are also being maintained elsewhere
-  \item standard formats where they exist! e.g. always MEI unless
-    there's some very good reason
-  \item automated testing for format conversions (e.g. from external sources)
-  \item data served through API
-  \item stable identifiers for works {\em and} for transcriptions, so
-    that the latter can be used in principle by other services
-    e.g. similarity
-  \item disambiguation of sources among multiple datasets
-  \item clear relation to identifiers in other sources (online or
-    offline) where available
+  \item Use of standard formats where they exist.
     \begin{itemize}
-    \item particularly, cross-reference to RISM identifiers for
-      composers and sources (where they exist)
+      \item For example, existing resources store tablature and score
+        incipits in a variety of formats including TabCode, ABC,
+        Humdrum, or Plaine \& Easie Code, but the world is
+        standardising on MEI and all of these formats can be converted
+        to it, so it makes sense to use it as a presentation format in
+        general.
+    \end{itemize}        
+  \item Provision of data through an API.
+  \item Ability to absorb further upstream changes after first import,
+    for adaptations of datasets that are being maintained elsewhere.
+    \begin{itemize}
+    \item May call for ``idempotent'', testable, automatically tested
+      format conversion and import processes.
     \end{itemize}
-  \item ability to handle substantial textual and other unstructured
-    data including diagrams and multimedia
-
+  \item Stable identifiers for works, sources, transcriptions.
+    \begin{itemize}
+    \item To allow to disambiguate works and sources that appear among
+      multiple input datasets.
+    \item To allow transcriptions to be referred to by computational
+      musicology processes, such as similarity calculations.
+    \item Identifiers linked to those used in other sources, online or
+      offline (particularly RISM where available).
+    \end{itemize}
+  \item Ability to handle substantial textual and other unstructured
+    data including diagrams and multimedia.
   \end{itemize}
 
   \subsubsection{Desired}
   
   \begin{itemize}
-  \item RDF
-  \item possibly ``immutable pipeline'' - rebuildable from source
-    format that is friendly for humans to work with
+  \item An ``immutable pipeline'' allowing a rebuild at any time from
+    source formats that are friendly for humans to work with.
     \begin{itemize}
-      \item but note the formats that other maintainers actually choose to
-        use! CSV (probably exported from a spreadsheet) and
-        XLS... much as I like e.g. RDF/Turtle, few people want to edit
-        that or JSON-LD directly
+      \item But note the formats that other maintainers actually deem
+        friendly and choose to use---these tend to be CSV and XLS, not
+        ``industry'' formats like JSON or ``academic'' like RDF/Turtle.
     \end{itemize}
-  \item ability to provide more than one front-end
-  \item multiple types of facsimile as well as potentially of
-    transcription---for example if a source has both Gerbode-edited
-    PNG and a detailed scan with limited editing, it would be useful
-    to retain both, with suitable metadata
-  \item RISM indexing compatibility
-  \item natively version-controlled
+  \item Ready support for version-controlled updates.
+  \item Ability to provide alternative front-ends over the same dataset.
+  \item Support for multiple types of facsimile as well as potentially
+    of transcription---for example if a source has both
+    screen-optimised PNG and a detailed scan with limited editing, it
+    would be useful to retain both, with suitable metadata.
+  \item RISM indexing compatibility.
+  \item API able to serve RDF and/or JSON-LD.
   \end{itemize}
-
   
-  \subsection{User Experience}
-
   \section{Possible Paths}\label{future}
 
+  We propose three alternative directions for sustainable development,
+  as follows.
+  
   \subsection{``Enhanced ECOLM''}
 
-  Relational database derived from current ECOLM
+  In this alternative, we would retain the relational data schema of
+  the existing ECOLM, which is the only one of the datasets under
+  consideration to have a formal schema, and provide ETL (extract,
+  transform, load) data loaders for other sources. We then publish the
+  schema, data dumps, and automation to rebuild or mirror the data,
+  along with the code of our query interface and encourage others to
+  attach their own interfaces or tools to it.
 
-  Advantages
+  Advantages of this approach include the ability to preserve existing
+  code and to use original ECOLM records as a reference. The existing
+  schema is detailed and fairly effective, provides appropriate
+  structure, and reflects some good domain-specific
+  decisions. Relational data import is a well understood field, and we
+  could focus on user interfaces and data conversion rather than any
+  novelty of data representation. If the work fails, the result should
+  be at minimum a more open publication of the existing ECOLM.
 
-  \begin{itemize}
-  \item preserves existing code; first set of data already imported
-  \item somewhat structured, encouraging consistency
-  \item some good domain-specific decisions made in the schema design
-  \item importing other data is work in the mature field of ETL with
-    corresponding tooling etc
-  \item can focus on user interfaces and data conversion rather than
-    rebuilding representation from scratch
-  \end{itemize}
+  Disadvantages include that the schema has little in common with any
+  of the ad-hoc solutions other maintainers have settled on, so all
+  import and export would be custom. It also has little in common with
+  wider current practice. The schema is perhaps already overspecified
+  for its current use, yet does not address any problems relating to
+  stable identifiers, versioning, or providing queryable APIs or data
+  sources.
 
-  Disadvantages
-
-  \begin{itemize}
-  \item versioning is difficult
-  \item does not solve the stable identifiers problem
-  \item has proven somewhat overspecified for its current use
-    (e.g. data maturity fields bodged)
-  \item little in common with other solutions people have used, so all
-    import/export is custom
-  \item cannot easily drop in other ``views'' apart from any we have
-    written ourselves
-  \item providing APIs is manual work
-  \end{itemize}
+  Although we could at least initially reuse the existing user
+  interface, it is no longer considered a strength of ECOLM and would
+  need some work to update to modern expectations.
 
   \subsection{Graph-based}
 
-  Fundamental representation is a graph of triples in the RDF mould;
-  all metadata converted to that for import and from it for query;
-  data such as transcriptions, multimedia etc referred to by
-  identifiers in the same space (e.g. URIs)
+  In this alternative, we would take the fundamental representation to
+  be a graph of triples in the model of RDF, and convert all metadata
+  to that for import and from it for query. External data such as
+  transcriptions and multimedia resources are identified by
+  graph-relatable identifiers such as URIs.
 
-  Advantages
+  Advantages include the use of a widely-understood and accepted model
+  that meets common expectations about data compatibility and API
+  provision. For schema we can draw ontologies from existing systems
+  including the widely-used RISM. The structure is reasonably amenable
+  to versioning and to use of ``idempotent'' import flows with
+  automated testing, offering the option of ongoing import of changes
+  in upstream sources. In principle existing tools may be used for
+  review, query, inferencing, and conversion. The use of standard
+  formats with automated tests could lead to a result far more easily
+  maintained or mirrored by third parties.
 
-  \begin{itemize}
-    \item widely understood model, not least because other systems
-      often make RDF available via API. Although no longer trendy, RDF
-      has not died out and probably won't do soon
-    \item lowest-common-denominator representation as target for data
-      conversions
-    \item not too awful for versioning (even just using git, with
-      Turtle or JSON-LD)
-    \item good target for ``idempotent'' one-way conversion flows,
-      supporting automated tests for reliability, offering possibility
-      to integrate ongoing upstream changes
-    \item makes serving data via API almost free
-    \item in principle can use existing tools for review, query,
-      inferencing, format conversion
-  \end{itemize}
+  The approach has difficulties as well. It discards the existing user
+  interface work and requires even the existing ECOLM data to be
+  converted. Although graph representations have wide application,
+  they are not generally used for manual data management and therefore
+  have as little in common with the ad-hoc schemas of enthusiast lute
+  resources as with that of ECOLM. Significant work would be required
+  to maintain stable identifier mappings from external sources. With a
+  more flexible structure than ECOLM's relational database, care and
+  good automated testing would be needed to avoid ``silently missing
+  data'' problems on query. Finally a separate solution would be
+  needed to the problem of identifying and retrieving non-graph data
+  such as media resources.
 
-  Disadvantages
-
-  \begin{itemize}
-    \item in practice using existing tools for inferencing means
-      entering the world of galaxy-brained semantic web savants
-    \item normal people do not choose to hand-maintain data in triples
-      of URIs, so none of our candidate datasets use this format ---
-      it's no CSV
-    \item commonplace ontology mismatch giving ``silently missing
-      data'' problems on query --- good testing strongly advised
-    \item similarly, typeless or with awkward typing
-    \item problem of which ontology to target does not appear to have
-      a single best solution (and we don't really want to be in the
-      business of developing one)
-    \item no built-in solution to problem of identifying and
-      retrieving bulkier data such as images
-  \end{itemize}
+  Although in this approach we could no longer use the existing ECOLM
+  user interface, that may be slightly mitigated by the ability to
+  adapt other graph-driven UIs to the model.
 
   \subsection{``RISM-aligned''}
 
-  Fundamental metadata representation is MARC, and we use Muscat to
-  maintain it? 
+  In this alternative, we would concentrate on compatibility with
+  formats and software used by RISM. The motivating principle is that
+  RISM is the dominant ``entry point'' in this field and, although our
+  sources are not all up to the standard indexed by RISM, we want to
+  facilitate linkage for those that are, and to be prepared if in the
+  future RISM should grow to cover the whole area of directly
+  represented lute tablature. The ideal future here would involve
+  replacing this project entirely with an aspect of RISM.
+
+  In this approach the metadata representation might be MARC, as it is
+  within RISM, and possibly the RISM Muscat application might be used
+  for management.
+
+  \subsection{Summary of Paths}
+
+  The three alternatives we have listed broadly correspond to common
+  patterns in work of this type:
+
+  \begin{enumerate}
+  \item Choose one of the existing technical solutions already in use,
+    and adapt the others to it;
+  \item Adopt a higher-level ``linked data'' approach in which all
+    existing resources are promoted to an interoperable format;
+  \item Find an industry partner, adopt their tools, and contribute to
+    their existing ecosystem.
+  \end{enumerate}
+
+  In this case RISM is the closest thing available to a
+  standard-setting source of industrial tooling and integration, so it
+  may serve as the equivalent of an industry partner. Hybrid
+  approaches may also be practical, such as adapting the existing
+  sources into a graph representation as a lowest-common-denominator
+  precursor to conversion into other formats.
   
   \clearpage
 

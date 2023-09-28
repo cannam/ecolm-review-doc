@@ -186,74 +186,79 @@
   
   \section{Understanding User Context}\label{user-context}
 
-  We conducted informal interviews with three exemplary users of
-  online early-music resources, in order to understand scholarly
-  expectations. These were a ``traditional'' musicologist, a
-  computational musicologist, and a lute performer and teacher.
+  The resources we are considering serve a spectrum of audiences. At
+  one end, lutemusic.org aims at performers and includes edited
+  transcriptions with relatively little scholarly metadata or
+  editorial comment. At the other, ECOLM was aimed at computational
+  musicologists and prioritises diplomatic facsimiles and
+  transcriptions that preserve original scribal idiosyncracies.
+
+  In this review we are particularly concerned with sustainability for
+  musicology and other academic purposes. To this end, we conducted
+  informal interviews with three exemplary users of online early-music
+  resources, in order to understand scholarly expectations. These were
+  a ``traditional'' musicologist, a computational musicologist, and a
+  lute performer and teacher.
   
   \subsection{Musicologist}
 
-  The musicologist gave the following indications about their use of
-  online resources of this type:
+  Depending on the material they are looking for, the musicologist we
+  spoke to may begin by searching the
+  RISM\footnote{https://rism.info/} or
+  Cantus\footnote{https://cantus.uwaterloo.ca/} databases. They
+  routinely start with a search by composer or source, because titles
+  tend to have too many historical variants.
 
-  \begin{itemize}
-    \item Depending on the material, may begin by searching
-      RISM\footnote{https://rism.info/} or
-      Cantus\footnote{https://cantus.uwaterloo.ca/} databases;
-    \item Routinely starts with a search by composer or source, since
-      titles tend to have too many historical variants;
-    \item Finds diplomatic transcriptions (i.e. closely following
-      the source without editorial intervention) the most useful,
-      but grateful for any transcription;
-    \item Always refers to the facsimile as well, regardless of status
-      of transcriptions, so can often do without editorial notes;
-    \item Is particularly interested in dual tablature and staff
-      renderings;
-    \item Would appreciate opportunity to annotate or correct
-      unreliable transcriptions.
-  \end{itemize}
+  They find diplomatic transcriptions (i.e. closely following the
+  source without editorial intervention) the most useful, but are
+  grateful to find any transcription. However, they always refer to
+  the facsimile as well, regardless of the status of any
+  transcriptions, so can often do without editorial notes.
+  
+  This musicologist was particularly interested in dual tablature and
+  staff renderings, because they are not a specialist in
+  tablature. They would also appreciate the opportunity to annotate or
+  correct unreliable transcriptions for their own use.
   
   \subsection{Computational Musicologist}
 
-  The computational musicologist gave the following indications about
-  their use of such resources:
-
-  \begin{itemize}
-  \item Will typically begin by searching RISM, and trusts that
-    metadata in RISM is more authoritative than elsewhere;
-  \item Finds trust very important, appreciating annotations about the
-    original source, transcriber, and editorial interventions;
-  \item Can work with unreliable transcriptions if their quality is
-    known and original sources are properly described;
-  \item Appreciates a simple presentation and single search function
-    as their first entry point;
-  \item Finds the ability to refine results via facets more useful
-    than the ability to construct complex queries from the outset;
-  \item Wants the ability to download results (up to the whole
-    dataset) or query via API, to use with computational tools such
-    as music21 or Humdrum locally.
-  \end{itemize}
+  The computational musicologist we spoke to would typically also
+  begin by searching RISM. They trust that metadata in RISM is more
+  authoritative than elsewhere.
+  
+  They consider trust very important, and appreciate annotations about
+  the original source, transcriber, and editorial interventions. They
+  can work with unreliable transcriptions, if their quality is known
+  and original sources are properly described.
+  
+  When considering the user interface to a dataset, they appreciate a
+  simple presentation and single search function as their first entry
+  point. They described the ability to refine results via facets as
+  more useful than the ability to construct complex queries from the
+  outset.
+  
+  The computational musicologist expects the ability to download
+  results (up to possibly the whole dataset) or to query data via API,
+  for use with computational tools such as music21 or Humdrum locally.
   
   \subsection{Lute Performer and Teacher}
 
-  The lute performer and teacher gave the following indications about
-  their use:
-
-  \begin{itemize}
-    \item Will often begin using the most informal performance
-      resources because they have the most material, but this causes
-      problems cross-referencing with more authoritative material;
-    \item Finds information about the original source, transcriber,
-      editorial interventions extremely important;
-    \item Expects students to know those things about the editions
-      they use when performing;
-    \item Would greatly appreciate something containing modern
-      performing editions as at lutemusic.org but with more reliable
-      editorial commentary;
-    \item In the absence of trustworthy information about the
-      transcription, needs to compare every note with facsimile before
-      using.
-  \end{itemize}
+  The lute performer and teacher we spoke to would often begin by
+  using the most informal performance resources, simply because they
+  have the most material available. This causes problems
+  cross-referencing with more authoritative material. They find
+  information about the original source, transcriber, and editorial
+  interventions extremely important, but these are often lacking in
+  performance resources.
+  
+  As a teacher, they expect students to know the history of the
+  editions they use when performing. They would greatly appreciate
+  something containing modern performing editions, as at
+  lutemusic.org, but with more reliable editorial commentary.
+      
+  In the absence of trustworthy editorial information, they
+  effectively need to compare every note with the facsimile before
+  making serious use of a transcription.
 
   \subsection{Common Threads}
 
@@ -274,80 +279,119 @@
   None of the three indicated they would hope to {\em contribute}
   material to a dataset like this, although they might appreciate the
   ability to make corrections.
+
+  The users mentioned some other sites which they regarded as
+  particularly useful or as good examples to learn from. These are
+  listed in section \ref{other-sites} below.
   
   \section{Technical Review}\label{technical}
 
+  We studied the technical makeup of each of these resources and of
+  other sites of interest, including retrieving data and schema dumps
+  and mapping the schema where applicable. Schema diagrams and
+  accompanying notes are included separately at the end of this
+  document.
+  
   \subsection{Tablature Resources}
   
   \subsubsection{ECOLM}
 
-  \begin{itemize}
-  \item SQL database
-  \item Entity relationships modelled in schema---pre-RDF, not
-    triples, relations hardcoded
-  \item Structured using ``clusters'' (give examples)---attempt to
-    support more general relations within schema
-  \item Confidence levels modelled
-  \item Same database used for user logins / editorial control as for
-    content records---expectation that data managed ``within ECOLM''
-  \item Degree of rigour in organisation means that, while it may be
-    tricky to convert or adapt to another format or system, such an
-    effort will probably succeed without too many loose ends
-  \end{itemize}
+  ECOLM is a web application written in PHP backed by an SQL
+  database.
 
-  See section \ref{ecolm-data} for more technical details.
+  Entity relationships are modelled directly in the schema rather than
+  as literal relations in the RDF or triple-store sense. Relations are
+  hardcoded and cannot be changed once the database has been loaded.
+  
+  A concept known as ``clusters'' is used to give some support for
+  more general relations within the schema. The most common use is for
+  grouping a number of ``pieces'' (representations within published
+  sources) into a ``work'' (a single musical composition).
+
+  The schema supports modelling of confidence levels for relations,
+  and dates are modelled with a custom type that supports
+  partially-bounded queries and queries of varying precision.
+  
+  The same database is used for administrative work (user logins and
+  editorial control) as for content records; there is an expectation
+  that data entry and management are carried out within the same ECOLM
+  application as query and retrieval.
+
+  Transcriptions are stored in TabCode, a format devised for the
+  purpose and not widely used elsewhere. Converters between TabCode
+  and other formats are readily available.
+ 
+  The degree of rigour in organisation means that, while it may be
+  tricky to convert or adapt to another format or system, such an
+  effort will probably succeed without too many loose ends.
+
+  See section \ref{ecolm-data} for more technical details and a schema
+  diagram.
 
   \subsubsection{mss.slweiss.de}
 
-  \begin{itemize}
-  \item PHP web application driven entirely from CSV files (actually
-    semicolon-separated rather than comma-separated)
-  \item Flat directory containing one CSV file per source
-  \item Incipits embedded in the CSV files, in ABC format, rendered to
-    SVG from the PHP scripts for serving to browser
-  \item Separate index CSV files list manuscript metadata and
-    concordances
-  \item Version-controlled since 2013
-  \item Organisation seems tidy and easy to deal with
-  \end{itemize}
+  This is a web application written in PHP and driven entirely from
+  CSV-like files with a semicolon-separated tabular format.
+  
+  There is a flat directory containing one CSV-like file per source.
+  Separate index files in the same CSV-like format contain manuscript
+  metadata and concordances.
+
+  Incipits are embedded in the CSV files, in ABC format, and rendered
+  to SVG from the PHP scripts to be served to the browser. Query
+  capabilities are limited and full transcriptions are not included.
+
+  The dataset has been version-controlled since 2013, and is
+  well-organised and looks relatively easy to deal with.
   
   \subsubsection{lutemusic.org}
 
-  \begin{itemize}
-  \item Hierarchical organisation with separate trees by composer,
-    source, and facsimile
-  \item Composer and source trees contain Fronimo tab transcriptions
-    with derived MIDI and PDF renderings
-  \item Facsimile tree contains images (typically PNG) closely cropped
-    with thresholding, apparently intended for reading from screen
-    rather than as historical page facsimiles
-  \item Separate tab hierarchy also present with tab-format files,
-    probably older
-  \item Hand-maintained spreadsheet contains metadata and index for
-    Fronimo files
-  \item Website presents the filesystem hierarchy directly (entirely
-    static, uses web server index pages, nothing generated)
-  \item Irregular organisation may make adaptation relatively high
-    risk
-  \end{itemize}
+  This is implemented by directly exposing a static file hierarchy
+  through a web server.
+  
+  The site uses a hierarchical organisation, with separate filesystem
+  trees by composer, source, and facsimile. Composer and source trees
+  contain Fronimo tab transcriptions with derived MIDI and PDF
+  renderings.
+  
+  The facsimile tree contains images (typically PNG) closely cropped
+  with thresholding, apparently intended for clear reading from screen
+  rather than as historical page facsimiles.
+    
+  A separate, apparently older, tab hierarchy also present with
+  tab-format files.
+  
+  The files are indexed using a hand-maintained spreadsheet which
+  contains metadata and the Fronimo file index. There does not appear
+  to be versioning for files or the index.
+  
+  This design is attractively simple, but its irregular organisation
+  may make adaptation relatively high risk.
     
   \subsubsection{Lute Society}
 
-  \begin{itemize}
-  \item Lute News facsimiles and transcriptions organised by issue
-  \item Organisation is on filesystem, with PDFs and transcriptions of
-    both text and tablature
-  \item Simple front-end added by Tim
-    Crawford\footnote{https://doc.gold.ac.uk/~mas01tc/jhr\_web/}
-    provides a web index via Javascript requests from client
-  \item Seems well arranged, the biggest problem looks like the wide
-    variety of types of material present and the original linear
-    organisation for readers and players
-  \end{itemize}
+  This consists of facsimiles and transcriptions from the Lute News
+  paper publication, organised by issue number.
+  
+  The organisation is on filesystem, with PDFs and transcriptions of
+  both text and tablature.
+  
+  There is a simple front-end available, provided by Tim
+  Crawford\footnote{https://doc.gold.ac.uk/~mas01tc/jhr\_web/} which
+  provides a web index via Javascript requests on the client side.
+  
+  The content seems well organised. The difficulty is the wide variety
+  of types of material present (including a lot of prose commentary)
+  and the original linear organisation intended for readers and players.
   
   \subsubsection{Phal\`ese}
 
-  \subsection{Other Sites of Interest}
+  We have relatively little technical information about the Phal\`ese
+  dataset. It is understood to contain transcriptions in Tab format,
+  along with EPS and JPEG facsimiles and documentation mapping the
+  pieces to the original volume and location.
+
+  \subsection{Other Sites of Interest}\label{other-sites}
   
   \subsubsection{RISM}
 

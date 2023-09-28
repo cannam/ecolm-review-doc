@@ -1,5 +1,6 @@
 
-\documentclass[sigconf]{acmart}
+\documentclass[sigconf, nonacm=true]{acmart}
+\setcopyright{none}
 %\documentclass[9pt,twocolumn]{extarticle}
 %\usepackage[a4paper,margin=0.8in]{geometry}
 %\usepackage{dblfloatfix}
@@ -10,6 +11,28 @@
 
 \begin{document}
 \title{ECOLM Futures Review}
+
+\author{Chris Cannam}
+\orcid{https://orcid.org/0009-0001-9814-6512}
+\affiliation{%
+  \institution{Particular Programs Ltd}
+  \city{London}
+  \country{UK}}
+\email{chris.cannam@particularprograms.co.uk}
+
+\author{David Lewis}
+\affiliation{%
+  \institution{Goldsmiths, University of London}
+  \city{London}
+  \country{UK}}
+\email{d.lewis@gold.ac.uk}
+
+\author{Tim Crawford}
+\affiliation{%
+  \institution{Goldsmiths, University of London}
+  \city{London}
+  \country{UK}}
+\email{t.crawford@gold.ac.uk}
 
 \maketitle
 \begin{sloppypar}
@@ -27,45 +50,55 @@
 
   \subsection{What is ECOLM?}
 
-  ECOLM\footnote{http://igor.gold.ac.uk/isms/ecolm/}, or ``Electronic
-  Corpus of Lute Music'', is the name of a series of research projects
-  aiming to develop a queryable online database of lute tablature
-  encodings, of quality suitable for scholarly use.
+  ECOLM\footnote{http://igor.gold.ac.uk/isms/ecolm/} or ``Electronic
+  Corpus of Lute Music'' was a series of research projects aiming to
+  develop a queryable online database of lute tablature encodings, of
+  quality suitable for scholarly use.
 
-  Two critical design goals are:
+  Two critical, and still relevant, goals were:
   
   \begin{enumerate}
-  \item It gives encodings of music, not only metadata;
-  \item It is trustworthy for scholarly use: for example, sources are
+  \item To store and deliver encodings of music, not only metadata;
+  \item To be trustworthy for scholarly use: for example, sources are
     identified, reliability of attribution is noted, editorial changes
-    are pointed out, and it distinguishes between performance and
-    diplomatic transcriptions.
+    are pointed out, and the schema distinguishes between performance
+    and diplomatic transcriptions.
   \end{enumerate}
   
   Here we use the name ECOLM broadly to refer to this design of
-  database application, as well as to the past research projects with
+  database application, as well as to the past research projects of
   that name and to the existing
   system\footnote{http://doc.gold.ac.uk/isms/ecolm/database/} that
   they produced.
 
-  \subsection{Aim of this Review}
+  \subsection{Aim and Structure of this Review}
 
   We aim to review the premise and outcomes of ECOLM and to consider
   whether a ``lightweight path to sustainability'' can be found that
   can be incrementally extended to other tablature resources.
 
-  The following paragraphs set out the history of ECOLM and enumerate
-  other resources of interest.
+  In section \ref{enumerate-resources} we first set out the history of
+  ECOLM and enumerate other resources of interest. Section
+  \ref{user-context} identifies some typical users of such resources
+  and describes our findings from user interviews. In section
+  \ref{technical} we outline the technical makeup of each of these
+  resources and some related sites of interest. Section
+  \ref{desirable-qualities} summarises the desirable qualities we seek
+  in a solution, and section \ref{future} suggests three possible
+  future courses of action.
 
-  \subsection{ECOLM History}
+  \section{ECOLM and Other Resources}\label{enumerate-resources}
+  
+  \subsection{The ECOLM Projects}
 
   %%%!!! + bibliography
   %%%!!! + URLs in footnote
   \begin{itemize}
-  \item {\bf ECOLM} (1999-2002) was a project run by Tim Crawford
-    which produced a queryable database of lute encodings with
-    metadata with a web interface. Presented through a public-facing
-    server at Goldsmiths, the service is still accessible today.
+  \item {\bf ECOLM} (1999-2002) was a project run by Tim Crawford,
+    initially at King's College London, which produced a queryable
+    database of lute encodings with metadata with a web interface. The
+    resulting service is still accessible today through a
+    public-facing server hosted at Goldsmiths.
   \item {\bf ECOLM II} (2002-2006) was a successor project which
     expanded the ECOLM database and used it for some computational
     musicological investigations.
@@ -81,14 +114,8 @@
 
   \subsection{Other Lute Tablature Resources}
 
-  Several other collections of lute music have been placed online by
-  various curators. Some of these are licensed appropriately for
-  inclusion in any future dataset, some have been offered for this
-  use, and in some cases there are also concerns about their ongoing
-  sustainability. Therefore we would prefer a solution with the
-  potential to incorporate and maintain data from these resources as
-  well.
-
+  Several other collections of lute music have been collected and
+  placed online by various curators. Of particular interest are:
   \begin{itemize}
     \item {\bf Mss.slweiss.de}\footnote{https://mss.slweiss.de/}
       curated by Peter Steur and the late Markus Lutz. A metadata
@@ -110,6 +137,23 @@
       %% licence terms, how widely used
   \end{itemize}
 
+  There are concerns about the ongoing sustainability of all of these,
+  similar to those about ECOLM: curation and maintenance by
+  individuals or small groups of enthusiasts, in some cases of
+  retirement age; maintenance in limited periods of spare time,
+  perhaps following initial short-term funding; data management using
+  ad-hoc methods or private systems that are not accessible to
+  third-party reproduction; lack of data export facilities or support
+  for common interchange formats.
+
+  Therefore, we would prefer to find a solution with the potential to
+  incorporate and maintain data from these resources as well.
+
+  The lutemusic.org transcriptions are explicitly Creative Commons
+  NC-SA licensed, and the maintainers of the other listed resources
+  have indicated willingness to contribute to a potential combined
+  dataset.
+  
   \renewcommand{\arraystretch}{1.2}
   \setlength{\tabcolsep}{4pt}
   
@@ -219,6 +263,10 @@
   desire to know the quality of transcription and level of editorial
   intervention they are dealing with.
 
+  There was also some consensus about the value of simple search with
+  subsequent refinement, of a cleanly-designed results layout
+  including inline incipits, and of API and data provision.
+  
   The musicological specialists were comfortable with RISM and would
   prefer some level of compatibility, perhaps as far as having the
   works indexed from RISM and metadata managed there.
@@ -227,7 +275,7 @@
   material to a dataset like this, although they might appreciate the
   ability to make corrections.
   
-  \section{Technical Review}
+  \section{Technical Review}\label{technical}
 
   \subsection{Tablature Resources}
   
@@ -387,7 +435,7 @@
   applicable. There is some linkage to other informal resources such
   as Wikipedia as well as to formal authorities such as VIAF.
   
-  \section{Desirable Qualities of a Solution}
+  \section{Desirable Qualities of a Solution}\label{desirable-qualities}
   \subsection{Social}
 
   \begin{itemize}
@@ -446,7 +494,7 @@
   
   \subsection{User Experience}
 
-  \section{Possible Paths}
+  \section{Possible Paths}\label{future}
 
   \subsection{``Enhanced ECOLM''}
 

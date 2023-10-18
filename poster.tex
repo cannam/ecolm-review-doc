@@ -1,7 +1,7 @@
 % Poster layout from a0poster by Gerlinde Kettl and Matthias Weiser 
 % CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
 
-\documentclass[a0,landscape]{a0poster}
+\documentclass[a0,portrait]{a0poster}
 
 \usepackage{multicol}
 \usepackage{graphicx}
@@ -14,71 +14,63 @@
 \columnsep=100pt % This is the amount of white space between the columns in the poster
 \columnseprule=3pt % This is the thickness of the black line between the columns in the poster
 
-\renewcommand{\normalsize}{\fontsize{34}{42}\selectfont}
+\renewcommand{\normalsize}{\fontsize{32}{40}\selectfont}
 
 \begin{document}
 
-\begin{minipage}[b]{0.9\linewidth}
-\veryHuge \textbf{Software Sustainability Challenge: ECOLM and Lute Tablature}\\
-%\Huge\textit{An Exploration of Complexity}\\
-\\[1cm]
-\huge \textbf{Chris Cannam} Particular Programs Ltd\\
+\begin{minipage}[b]{0.8\linewidth}
+  \vspace{2cm}
+  \veryHuge \textbf{Software Sustainability Challenge:\\
+    ECOLM and Lute Tablature}\\
+  \huge
+  \\
+  \textbf{Chris Cannam} Particular Programs Ltd\\
 \textbf{David Lewis, Tim Crawford} Goldsmiths, University of London\\
 \end{minipage}
 %
-\begin{minipage}[b]{0.1\linewidth}
-  \begin{center}
-    \includegraphics[]{images/qr}\\
+\begin{minipage}[b]{0.2\linewidth}
+  \begin{flushright}
+    \includegraphics[width=0.8\textwidth]{images/goldsmiths-trimmed}\\
+    \vspace{1cm}
+    \includegraphics[height=6cm]{images/qr}\\
     \vspace{-5mm}
-  Read more here!
-  \end{center}
+    Read more here!
+  \end{flushright}
+  \vspace{2cm}
 \end{minipage}
 
-\vspace{1cm} % A bit of extra whitespace between the header and poster content
+\vspace{3cm} % A bit of extra whitespace between the header and poster content
 
 %----------------------------------------------------------------------------------------
 
 \begin{multicols}{3}
   
-\begin{sloppypar}
-
+  \begin{sloppypar}
+    
   \noindent\textbf{\LARGE What is ECOLM?}\\
 
   \noindent``Electronic Corpus of Lute Music'', a series of projects
   (1999-2006 and 2012) to make a database of lute tablature encodings
   with metadata, for scholarly use, queried using a web interface. The
-  resource is still available but not actively maintained.
+  resulting database was hosted at Goldsmiths, University of London,
+  and is still running today, although nobody is formally responsible
+  for maintaining it.
 
-  \begin{center}\vspace{1cm}
-  \includegraphics[width=0.9\columnwidth,frame]{images/ecolm-screenshot}\\
+  \begin{center}\vspace{2cm}
+  \includegraphics[width=0.95\columnwidth,frame]{images/ecolm-screenshot}\\
   {\small The ECOLM interface as it appears today.}
-  \end{center}\vspace{1cm}
+  \end{center}\vspace{2cm}
 
-  \noindent We are also interested in the future of a whole field of
-  lute tablature resources, besides ECOLM. These include {\bf
-    lutemusic.org} by Sarge Gerbode; {\bf mss.slweiss.de} by Peter
-  Steur and the late Markus Lutz; {\bf Lute Society publications}
-  curated by John Robinson; and a set of {\bf editions by Pierre
-    Phal\`ese} curated by Jan Burgers. In general they are CC-licensed
-  or have maintainers open to collaboration.
+  \noindent ECOLM is a relatively small scholarly resource with around
+  2,000 encodings. We are also interested in the future of a whole
+  field of other tablature resources of varying size and editorial
+  standards. These include {\bf lutemusic.org} by Sarge Gerbode, {\bf
+    mss.slweiss.de} by Peter Steur and the late Markus Lutz, {\bf Lute
+    Society publications} curated by John Robinson, and a set of {\bf
+    editions by Pierre Phal\`ese} curated by Jan Burgers. In general
+  they are CC-licensed or have maintainers open to collaboration.
 
   \vspace{2cm}
-  \noindent\textbf{\LARGE The Challenge}\\
-
-  \noindent The problems these resources face are highly typical:
-  curation and maintenance by \textbf{individuals or small groups of
-    enthusiasts}, in some cases of retirement age; maintenance in
-  \textbf{limited periods of spare time}; data management using
-  \textbf{ad-hoc methods} or private systems that are not accessible
-  to third-party reproduction; \textbf{lack of data export} facilities
-  or support for common \textbf{interchange formats}.
-
-  \noindent Lute tablature faces further difficulties because it is
-  such a specialised field. Wider digital solutions for music
-  distribution and study typically do not handle it and its resources
-  face significant risk of becoming inaccessible.
-
-  \columnbreak
   \noindent\textbf{\LARGE Audiences}\\
 
   \noindent These resources serve a spectrum of audiences from
@@ -103,18 +95,50 @@
   Sources Musicales) which is a near-ubiquitous entry point for
   musicological queries.
 
-  \begin{center}\vspace{1cm}
-    \includegraphics[width=0.7\columnwidth]{images/giraffe-archlute-2}\\
+  \columnbreak
+  \noindent\textbf{\LARGE The Challenge}\\
+
+  \noindent The problems these resources face are highly typical:
+  curation and maintenance by \textbf{individuals or small groups of
+    enthusiasts}, in some cases of retirement age; maintenance in
+  \textbf{limited periods of spare time}; data management using
+  \textbf{ad-hoc methods} or private systems that are not accessible
+  to third-party reproduction; \textbf{lack of data export} facilities
+  or support for common \textbf{interchange formats}.
+
+  \noindent Lute tablature faces further difficulties because it is
+  such a specialised field. Wider digital solutions for music
+  distribution and study typically do not handle it and its resources
+  face significant risk of becoming inaccessible.
+
+  \begin{center}
+    \includegraphics[width=0.8\columnwidth]{images/giraffe-archlute-2}\\
     \vspace{-1cm}
   {\small A giraffe playing an archlute.}
     \vspace{1cm}
   \end{center}
-
+  
   \vspace{1cm}
-  \noindent\textbf{\LARGE The Bigger Picture}\\
+  \noindent\textbf{\LARGE A Sustainable Outcome}\\
 
-  \noindent The three directions we have identified are patterns for work
-  of this kind:
+  \noindent Requirements for a socially-sustainable outcome:
+
+  \noindent \textbf{Sufficient immediate utility} to justify the work
+  and to ensure that users are invested in the outcome;
+
+  \noindent \textbf{Sufficient scholarly quality} to ensure that the
+  outcome is genuinely helpful in expanding and improving the work
+  that users are able to do;
+  
+  \noindent \textbf{Accessible and robust technical choices} to enable
+    other enthusiast users to maintain and contribute to the outcome
+    without substantial difficulty or risk of causing damage.
+    
+  \vspace{2cm}
+  \noindent\textbf{\LARGE Common Patterns}\\
+
+  \noindent The three technical directions we have identified are
+  common patterns for work of this kind:
 
   \begin{enumerate}
   \item Choose one of the existing technical solutions and adapt the
@@ -124,11 +148,12 @@
   \item Find an industry partner, adopt their tools, and contribute to
     their existing ecosystem.
   \end{enumerate}
+  
 
   \columnbreak
 
   \noindent\textbf{\LARGE Possible Future Directions}\\
-  \vspace{-3cm}
+  \vspace{-1cm}
   \section{``Enhanced ECOLM''}
 
   Retain the relational data schema of ECOLM, the only one of the
@@ -148,7 +173,6 @@
   solve problems relating to stable identifiers, versioning, or
   providing queryable APIs or data sources.
 
-  \vspace{-1cm}
   \section{Graph-based}
 
   Take the fundamental representation to be a graph of triples like
@@ -156,8 +180,8 @@
   query. Identify external data (transcriptions, media) by graph IDs
   such as URIs.
 
-  \noindent\textbf{Advantages:} Widely-understood and accepted model
-  meeting common expectations about compatibility and APIs. Can draw
+  \noindent\textbf{Advantages:} Widely-understood model that meets
+  common expectations about compatibility and APIs. Can draw
   ontologies from existing systems. Reasonably amenable to versioning
   and to use of ``idempotent'' import flows with automated testing,
   for ongoing import of upstream changes. Could be more easily
@@ -170,7 +194,6 @@
   testing required to avoid ``silently missing data'' on query. Does
   not address non-graph data such as media.
   
-  \vspace{-1cm}
   \section{``RISM-aligned''}
 
   Focus on compatibility with formats and software used by RISM as the
@@ -184,8 +207,9 @@
   \noindent In this approach the metadata representation might be MARC
   (Machine Readable Cataloging) as it is within RISM, and possibly the
   RISM Muscat application might be used for management.
-  
+
 \end{sloppypar}
   
 \end{multicols}
+
 \end{document}
